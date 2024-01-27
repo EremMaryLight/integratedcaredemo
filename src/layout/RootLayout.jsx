@@ -27,7 +27,7 @@ export default function RootLayout() {
               Home
             </NavLink>
             <NavLink
-              to={"/about"}
+              to={"/"}
               className={({ isActive }) =>
                 isActive
                   ? "text-primary border-b-2 border-b-primary"
@@ -37,7 +37,7 @@ export default function RootLayout() {
               About Us
             </NavLink>
             <NavLink
-              to={"/offer"}
+              to={"/"}
               className={({ isActive }) =>
                 isActive
                   ? "text-primary border-b-2 border-b-primary"

@@ -13,7 +13,9 @@ function App() {
     createRoutesFromChildren(
       <Route path="/" element={<RootLayout />}>
         <Route index element={<HomePage />} />
+        <Route index element={<Login/>}/>
       </Route>
+      
     )
   );
 
