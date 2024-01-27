@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-export default function Login() {
+export default function Register() {
     return (
       <>
          <div>
@@ -15,16 +15,19 @@ export default function Login() {
           <section>
             <div>
               <form>
-                
+                <label>First Name</label>
+                <input/>
+                <label>Last Name</label>
+                <input/>
                 <label>Email Address</label>
                 <input/>
                 <label>Password</label>
                 <input/>
                 <input type="checkbox"/><p>I agree to the terms of service and privacy policy</p>
                 <button>
-                   Login
+                  Sign Up
                 </button>
-                <p>Do not have an account? <Link to ='./Register'>Register</Link></p>
+                <p>Already have an account? <Link to ='Login'>Login</Link></p>
               </form>
             </div>
           </section>
