@@ -87,7 +87,7 @@ export default function HomePage() {
       </section>
       <section className="font-montserrat w-full h-[404px] flex justify-center items-center divide-x-2 divide-black gap-3">
         <div className="text-end w-[553px]">
-          <p className="text-primary text-lg font-semibold capitalize">
+          <p id="about" className="text-primary text-lg font-semibold capitalize">
             About Us
           </p>
           <p className="text-[40px] font-semibold text-black leading-10">
@@ -101,9 +101,9 @@ export default function HomePage() {
           better-informed decisions and ultimately improving patient outcomes.
         </p>
       </section>
-      <section className="bg-secondary w-full h-[390px] flex flex-col justify-center items-center gap-6 font-montserrat text-white">
+      <section className="bg-secondary w-full pt-28 px-12 pb-8 flex flex-col justify-start items-start gap-10 text-white font-poppins">
         <p className="text-[40px] font-semibold">How To Register</p>
-        <section className="flex justify-center items-center gap-8">
+        <section className="grid grid-cols-3 gap-[150px]">
           <div className="flex justify-start items-center gap-1">
             <p className="text-lg font-semibold bg-white text-black px-4 py-1 rounded-full">
               1
