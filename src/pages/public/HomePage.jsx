@@ -1,11 +1,66 @@
-import access from "../assets/no-access.webp";
-import connection from "../assets/connection.webp";
-import patient from "../assets/patient.webp";
-import decision from "../assets/decision.webp";
-import efficiency from "../assets/efficiency.webp";
+import { NavLink } from "react-router-dom";
+import facebook from "../../assets/facebook.png";
+import instagram from "../../assets/instagram.png";
+import twitter from "../../assets/twitter.png";
+import linkedin from "../../assets/linkedin.png";
+import youtube from "../../assets/youtube.png";
+import access from "../../assets/no-access.webp";
+import connection from "../../assets/connection.webp";
+import patient from "../../assets/patient.webp";
+import decision from "../../assets/decision.webp";
+import efficiency from "../../assets/efficiency.webp";
 export default function HomePage() {
   return (
     <>
+      <header className="w-full pt-10 bg-secondary font-montserrat">
+        <nav className="w-full bg-white flex justify-between items-center py-4 px-3">
+          <div>
+            <p className="text-3xl font-semibold leading-10">
+              Integrated<span className="text-[#00A6FB]">Care</span>
+            </p>
+          </div>
+          <div className="flex justify-center items-center gap-5 text-base font-medium">
+            <NavLink
+              to={"/"}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-primary border-b-2 border-b-primary"
+                  : "text-black"
+              }
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to={"/about"}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-primary border-b-2 border-b-primary"
+                  : "text-black"
+              }
+            >
+              About Us
+            </NavLink>
+            <NavLink
+              to={"/offer"}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-primary border-b-2 border-b-primary"
+                  : "text-black"
+              }
+            >
+              Our Offer
+            </NavLink>
+          </div>
+          <div className="flex justify-start items-center gap-3">
+            <button className="flex justify-center items-center gap-2 text-primary text-sm px-4 py-2 rounded-lg border border-primary">
+              Login
+            </button>
+            <button className="flex justify-center items-center gap-2 text-white text-sm px-4 py-2 rounded-lg border bg-primary">
+              Register
+            </button>
+          </div>
+        </nav>
+      </header>
       <section className="w-full min-h-[80vh] flex flex-col justify-center items-center text-center doctors bg-center bg-cover text-white font-montserrat">
         <p className="text-[44px] font-bold mb-4">
           SImplified Patient Data for Improved{" "}
@@ -87,7 +142,10 @@ export default function HomePage() {
       </section>
       <section className="font-montserrat w-full h-[404px] flex justify-center items-center divide-x-2 divide-black gap-3">
         <div className="text-end w-[553px]">
-          <p id="about" className="text-primary text-lg font-semibold capitalize">
+          <p
+            id="about"
+            className="text-primary text-lg font-semibold capitalize"
+          >
             About Us
           </p>
           <p className="text-[40px] font-semibold text-black leading-10">
@@ -154,6 +212,70 @@ export default function HomePage() {
           </button>
         </aside>
       </section>
+      <footer className="bg-secondary w-full pt-28 px-12 pb-8 flex flex-col justify-start items-start gap-10 text-white font-poppins">
+        <p className="text-3xl font-semibold">IntegratedCare</p>
+        <section className="grid grid-cols-3 gap-[200px]">
+          <div className="flex flex-col justify-start items-start gap-4">
+            <p className="text-2xl font-medium">Company</p>
+            <p className="text-sm font-normal">About us</p>
+            <p className="text-sm font-normal">Our Services</p>
+            <p className="text-sm font-normal">FAQs</p>
+          </div>
+          <div className="flex flex-col justify-start items-start gap-4">
+            <p className="text-2xl font-medium">Products</p>
+            <p className="text-sm font-normal">Features</p>
+            <p className="text-sm font-normal">Mobile App</p>
+          </div>
+          <div className="flex flex-col justify-start items-start gap-4">
+            <p className="text-2xl font-medium">Legal</p>
+            <p className="text-sm font-normal">Legal</p>
+            <p className="text-sm font-normal">Terms of service</p>
+          </div>
+        </section>
+        <p className="font-poppins text-3xl font-semibold">
+          IntegratedCare{" "}
+          <span className="text-xl">
+            provides centralized repository for all patient information.
+          </span>
+        </p>
+        <div className="flex gap-8 justify-start items-center">
+          <img
+            src={facebook}
+            alt="facebook"
+            width={30}
+            height={30}
+            className="cursor-pointer"
+          />
+          <img
+            src={twitter}
+            alt="twitter"
+            width={30}
+            height={30}
+            className="cursor-pointer"
+          />
+          <img
+            src={youtube}
+            alt="youtube"
+            width={30}
+            height={30}
+            className="cursor-pointer"
+          />
+          <img
+            src={linkedin}
+            alt="linkedin"
+            width={30}
+            height={30}
+            className="cursor-pointer"
+          />
+          <img
+            src={instagram}
+            alt="instagram"
+            width={30}
+            height={30}
+            className="cursor-pointer"
+          />
+        </div>
+      </footer>
     </>
   );
 }
