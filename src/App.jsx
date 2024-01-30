@@ -6,7 +6,7 @@ import {
   createRoutesFromChildren,
 } from "react-router-dom";
 import "./App.css";
-import { HomePage, RoleSelection, SignUp } from "./pages";
+import { HomePage, RoleSelection, SignIn, SignUp } from "./pages";
 
 function App() {
   const router = createBrowserRouter(
@@ -16,6 +16,7 @@ function App() {
         <Route path="auth">
           <Route path="selection" element={<RoleSelection />} />
           <Route path="signup" element={<SignUp />} />
+          <Route path="signin" element={<SignIn />} />
         </Route>
       </Route>
     )

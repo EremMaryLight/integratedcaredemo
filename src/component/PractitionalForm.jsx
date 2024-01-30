@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-export default function PatientForm() {
+export default function PractitionalForm() {
   return (
-    <form className="w-full flex flex-col justify-center items-center gap-7 text-[#383838]">
+    <form className="w-full flex flex-col justify-center items-center gap-4 text-[#383838]">
       <section className="w-full flex justify-start items-center gap-6">
         <div className="w-[50%] text-left relative">
           <label
@@ -139,7 +139,66 @@ export default function PatientForm() {
           />
         </svg>
       </div>
-      <div className="w-full flex justify-start items-center -mt-5 gap-3">
+      <section className="w-full flex justify-start items-center gap-6">
+        <div className="w-[50%] text-left">
+          <label htmlFor="regNum" className="text-base font-semibold leading-6">
+            Registration Number
+          </label>
+          <input
+            type="text"
+            id="regNum"
+            name="regNum"
+            placeholder="FE12345678"
+            className="w-full px-3 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none"
+          />
+        </div>
+        <div className="w-[50%] text-left">
+          <label
+            htmlFor="specialty"
+            className="text-base font-semibold leading-6"
+          >
+            Specialty
+          </label>
+          <input
+            type="text"
+            id="specialty"
+            name="specialty"
+            placeholder="General Practitioner"
+            className="w-full px-3 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none"
+          />
+        </div>
+      </section>
+      <div className="w-full text-left relative">
+        <label
+          htmlFor="workAddress"
+          className="text-base font-semibold leading-6"
+        >
+          Work Address
+        </label>
+        <input
+          type="text"
+          id="workAddress"
+          name="workAddress"
+          placeholder="19, Herbert Macaulay Way, Obafemi Awolowo Road, Abuja"
+          className="w-full px-3 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none"
+        />
+      </div>
+      <div className="w-full text-left relative">
+        <label
+          htmlFor="workPhoneNo"
+          className="text-base font-semibold leading-6"
+        >
+          Work Phone Number
+        </label>
+        <input
+          type="number"
+          id="workPhoneNo"
+          name="workPhoneNo"
+          placeholder="+2348102345678"
+          className="w-full px-3 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none"
+        />
+      </div>
+      <div className="w-full flex justify-start items-center -mt-2 gap-3">
         <input
           type="checkbox"
           name="checkbox"
