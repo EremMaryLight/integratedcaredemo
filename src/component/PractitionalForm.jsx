@@ -103,6 +103,7 @@ export default function PractitionalForm() {
           id="password"
           name="password"
           placeholder="*******"
+          autoComplete="true"
           className="w-full pr-3 pl-8 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none"
         />
         <svg

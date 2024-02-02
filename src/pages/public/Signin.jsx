@@ -141,7 +141,7 @@ export default function SignIn() {
           </button>
           <p className="-mt-3 text-base text-[#515151] font-normal text-center">
             Don't have an account?{" "}
-            <Link className="text-primary" to={"/auth/login"}>
+            <Link className="text-primary" to={"/selection"}>
               Sign up.
             </Link>
           </p>
