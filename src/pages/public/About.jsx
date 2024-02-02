@@ -9,9 +9,9 @@ import connection from "../../assets/connection.webp";
 import patient from "../../assets/patient.webp";
 import decision from "../../assets/decision.webp";
 import efficiency from "../../assets/efficiency.webp";
-import  SignIn  from "./Signin";
-import About from "./About";
-export default function HomePage() {
+import  SignIn  from "./Signin"
+import React from "react";
+export default function About() {
   return (
     <>
       <header className="w-full pt-10 bg-secondary font-montserrat">
@@ -65,85 +65,7 @@ export default function HomePage() {
           </div>
         </nav>
       </header>
-      <section className="w-full min-h-[80vh] flex flex-col justify-center items-center text-center doctors bg-center bg-cover text-white font-montserrat">
-        <p className="text-[44px] font-bold mb-4">
-          SImplified Patient Data for Improved{" "}
-          <span className="text-primary">Healthcare</span>
-        </p>
-        <p className="text-[28px] font-medium mb-11">
-          Accessible anywhere, anytime
-        </p>
-        <button className="bg-primary px-8 py-4 w-fit text-base font-semibold rounded-lg">
-          Get Started
-        </button>
-      </section>
-      <section className="px-4 py-12 bg-[#F5F7FA] font-montserrat flex flex-col justify-center items-center">
-        <p className="text-lg font-semibold text-primary mb-3">What We Offer</p>
-        <p className="text-[40px] font-semibold text-black mb-20">
-          Improved Quality of Healthcare
-        </p>
-        <div className="flex justify-center items-center flex-wrap gap-8">
-          <aside className="px-5 py-8 rounded-lg bg-white text-center grid place-items-center">
-            <div className="w-[77px] h-[77px] bg-primary rounded-full flex justify-center items-center">
-              <img src={access} alt="no-access" />
-            </div>
-            <p className="text-2xl text-black my-2 font-semibold">
-              Streamlined Access
-            </p>
-            <p className="w-[266px] text-sm font-medium text-center leading-6">
-              Instant access to comprehensive patient information for healthcare
-              professionals.
-            </p>
-          </aside>
-          <aside className="px-5 py-8 rounded-lg bg-white text-center grid place-items-center">
-            <div className="w-[77px] h-[77px] bg-primary rounded-full flex justify-center items-center">
-              <img src={connection} alt="connection" />
-            </div>
-            <p className="text-2xl text-black my-2 font-semibold">
-              Connected Care
-            </p>
-            <p className="w-[266px] text-sm font-medium text-center leading-6">
-              Bridging the gaps between hospitals to ensure a unified and
-              collaborative approach.
-            </p>
-          </aside>
-          <aside className="px-5 py-8 rounded-lg bg-white text-center grid place-items-center">
-            <div className="w-[77px] h-[77px] bg-primary rounded-full flex justify-center items-center">
-              <img src={patient} alt="patient" />
-            </div>
-            <p className="text-2xl text-black my-2 font-semibold">
-              Patient-Centric Focus
-            </p>
-            <p className="w-[266px] text-sm font-medium text-center leading-6">
-              Putting patients at the forefront by enabling better-informed and
-              personalized care.
-            </p>
-          </aside>
-          <aside className="px-5 py-8 rounded-lg bg-white text-center grid place-items-center">
-            <div className="w-[77px] h-[77px] bg-primary rounded-full flex justify-center items-center">
-              <img src={decision} alt="decision" />
-            </div>
-            <p className="text-2xl text-black my-2 font-semibold">
-              Informed Decision-Making
-            </p>
-            <p className="w-[266px] text-sm font-medium text-center leading-6">
-              Empowering doctors with the data they need for precise and timely
-              decisions.
-            </p>
-          </aside>
-          <aside className="px-5 py-8 rounded-lg bg-white text-center grid place-items-center">
-            <div className="w-[77px] h-[77px] bg-primary rounded-full flex justify-center items-center">
-              <img src={efficiency} alt="efficiency" />
-            </div>
-            <p className="text-2xl text-black my-2 font-semibold">
-              Enhanced Efficiency
-            </p>
-            <p className="w-[266px] text-sm font-medium text-center leading-6">
-              Streamlining processes for improved healthcare delivery.
-            </p>
-          </aside>
-        </div>
-      </section>
+      
       <section className="font-montserrat w-full h-[404px] flex justify-center items-center divide-x-2 divide-black gap-3">
         <div className="text-end w-[553px]">
           <p
