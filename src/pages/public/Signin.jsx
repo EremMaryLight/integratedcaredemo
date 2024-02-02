@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import signupImage from "../../assets/signup.webp";
+import React from "react";
+
 export default function SignIn() {
   return (
     <section className="w-full flex justify-start items-start font-montserrat">
