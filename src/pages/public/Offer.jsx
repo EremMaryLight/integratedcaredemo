@@ -11,7 +11,7 @@ import decision from "../../assets/decision.webp";
 import efficiency from "../../assets/efficiency.webp";
 import  SignIn  from "./Signin";
 import About from "./About";
-export default function HomePage() {
+export default function Offer() {
   return (
     <>
       <header className="w-full pt-10 bg-secondary font-montserrat">
@@ -43,7 +43,7 @@ export default function HomePage() {
               About Us
             </NavLink>
             <NavLink
-              to={"/offer"}
+              to={"/Offer"}
               className={({ isActive }) =>
                 isActive
                   ? "text-primary border-b-2 border-b-primary"
@@ -65,18 +65,7 @@ export default function HomePage() {
           </div>
         </nav>
       </header>
-      <section className="w-full min-h-[80vh] flex flex-col justify-center items-center text-center doctors bg-center bg-cover text-white font-montserrat">
-        <p className="text-[44px] font-bold mb-4">
-          SImplified Patient Data for Improved{" "}
-          <span className="text-primary">Healthcare</span>
-        </p>
-        <p className="text-[28px] font-medium mb-11">
-          Accessible anywhere, anytime
-        </p>
-        <button className="bg-primary px-8 py-4 w-fit text-base font-semibold rounded-lg">
-          Get Started
-        </button>
-      </section>
+      
       <section className="px-4 py-12 bg-[#F5F7FA] font-montserrat flex flex-col justify-center items-center">
         <p className="text-lg font-semibold text-primary mb-3">What We Offer</p>
         <p className="text-[40px] font-semibold text-black mb-20">
@@ -144,25 +133,7 @@ export default function HomePage() {
           </aside>
         </div>
       </section>
-      <section className="font-montserrat w-full h-[404px] flex justify-center items-center divide-x-2 divide-black gap-3">
-        <div className="text-end w-[553px]">
-          <p
-            id="about"
-            className="text-primary text-lg font-semibold capitalize"
-          >
-            About Us
-          </p>
-          <p className="text-[40px] font-semibold text-black leading-10">
-            Revolutionized Healthcare Through Centralized Data
-          </p>
-        </div>
-        <p className="w-[510px] px-2 text-justify">
-          We're dedicated to transforming patient care by providing a
-          centralized hub for comprehensive medical data. With us, healthcare
-          professionals can access crucial information seamlessly, ensuring
-          better-informed decisions and ultimately improving patient outcomes.
-        </p>
-      </section>
+      
       <section className="bg-secondary w-full pt-28 px-12 pb-8 flex flex-col justify-start items-start gap-10 text-white font-poppins">
         <p className="text-[40px] font-semibold">How To Register</p>
         <section className="grid grid-cols-3 gap-[150px]">

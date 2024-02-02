@@ -6,25 +6,19 @@ import {
   createRoutesFromChildren,
 } from "react-router-dom";
 import "./App.css";
-import {
-  ForgotPassword,
-  HomePage,
-  RoleSelection,
-  SignIn,
-  SignUp,
-} from "./pages";
+import { HomePage, RoleSelection, SignIn, SignUp } from "./pages";
+
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromChildren(
       <Route path="/" element={<Outlet />}>
         <Route index element={<HomePage />} />
-        <Route path="auth">
-          <Route path="selection" element={<RoleSelection />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="signin" element={<SignIn />} />
-          <Route path="forgot-password" element={<ForgotPassword />} />
-        </Route>
+        {/* <Route path="auth"> */}
+          <Route path="Selection" element={<RoleSelection />} />
+          <Route path="SignUp" element={<SignUp />} />
+          <Route path="Signin" element={<SignIn />} />
+        {/* </Route> */}
       </Route>
     )
   );
