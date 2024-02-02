@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import facebook from "../../assets/facebook.png";
 import instagram from "../../assets/instagram.png";
 import twitter from "../../assets/twitter.png";
@@ -10,6 +10,7 @@ import patient from "../../assets/patient.webp";
 import decision from "../../assets/decision.webp";
 import efficiency from "../../assets/efficiency.webp";
 export default function HomePage() {
+  const navigate = useNavigate();
   return (
     <>
       <header className="w-full pt-10 bg-secondary font-montserrat">
@@ -52,10 +53,16 @@ export default function HomePage() {
             </NavLink>
           </div>
           <div className="flex justify-start items-center gap-3">
-            <button className="flex justify-center items-center gap-2 text-primary text-sm px-4 py-2 rounded-lg border border-primary">
+            <button
+              className="flex justify-center items-center gap-2 text-primary text-sm px-4 py-2 rounded-lg border border-primary"
+              onClick={() => navigate("/auth/signin")}
+            >
               Login
             </button>
-            <button className="flex justify-center items-center gap-2 text-white text-sm px-4 py-2 rounded-lg border bg-primary">
+            <button
+              className="flex justify-center items-center gap-2 text-white text-sm px-4 py-2 rounded-lg border bg-primary"
+              onClick={() => navigate("/auth/selection")}
+            >
               Register
             </button>
           </div>

@@ -1,6 +1,8 @@
+import { Navigate, useLocation } from "react-router-dom";
 import signupImage from "../../assets/signup.webp";
 import { PatientForm, PractitionalForm } from "../../component";
 export default function SignUp() {
+  const location = useLocation();
   return (
     <section className="w-full flex justify-start items-start font-montserrat">
       <aside className="bg-[#002549] w-[680px] h-screen flex flex-col justify-center items-center text-center sticky top-0 left-0">
@@ -27,7 +29,13 @@ export default function SignUp() {
             Welcome! Let's get started...
           </p>
         </div>
-        <PractitionalForm />
+        {location.state === "patient" ? (
+          <PatientForm />
+        ) : location.state === "practitional" ? (
+          <PractitionalForm />
+        ) : (
+          <Navigate to={"/auth/selection"} replace />
+        )}
       </aside>
     </section>
   );
