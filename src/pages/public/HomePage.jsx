@@ -9,6 +9,7 @@ import connection from "../../assets/connection.webp";
 import patient from "../../assets/patient.webp";
 import decision from "../../assets/decision.webp";
 import efficiency from "../../assets/efficiency.webp";
+import  SignIn  from "./Signin"
 export default function HomePage() {
   return (
     <>
@@ -52,12 +53,14 @@ export default function HomePage() {
             </NavLink>
           </div>
           <div className="flex justify-start items-center gap-3">
-            <button className="flex justify-center items-center gap-2 text-primary text-sm px-4 py-2 rounded-lg border border-primary">
+            <NavLink to="Signin" ><button className="flex justify-center items-center gap-2 text-primary text-sm px-4 py-2 rounded-lg border border-primary">
               Login
             </button>
-            <button className="flex justify-center items-center gap-2 text-white text-sm px-4 py-2 rounded-lg border bg-primary">
+            </NavLink>
+            <NavLink to="selection"><button className="flex justify-center items-center gap-2 text-white text-sm px-4 py-2 rounded-lg border bg-primary">
               Register
             </button>
+            </NavLink>
           </div>
         </nav>
       </header>
