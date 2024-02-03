@@ -6,7 +6,15 @@ import {
   createRoutesFromChildren,
 } from "react-router-dom";
 import "./App.css";
-import { ContactUs, HomePage, RoleSelection, SignIn, SignUp } from "./pages";
+import {
+  About,
+  ContactUs,
+  HomePage,
+  Offer,
+  RoleSelection,
+  SignIn,
+  SignUp,
+} from "./pages";
 import RootLayout from "./layout/RootLayout";
 
 function App() {
@@ -16,6 +24,8 @@ function App() {
         <Route path="/" element={<RootLayout />}>
           <Route index element={<HomePage />} />
           <Route path="contact-us" element={<ContactUs />} />
+          <Route path="about" element={<About />} />
+          <Route path="offer" element={<Offer />} />
         </Route>
         <Route path="auth">
           <Route path="Selection" element={<RoleSelection />} />
