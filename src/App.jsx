@@ -6,13 +6,17 @@ import {
   createRoutesFromChildren,
 } from "react-router-dom";
 import "./App.css";
-import { HomePage, RoleSelection, SignIn, SignUp } from "./pages";
+import { ContactUs, HomePage, RoleSelection, SignIn, SignUp } from "./pages";
+import RootLayout from "./layout/RootLayout";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromChildren(
       <Route path="/" element={<Outlet />}>
-        <Route index element={<HomePage />} />
+        <Route path="/" element={<RootLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="contact-us" element={<ContactUs />} />
+        </Route>
         <Route path="auth">
           <Route path="Selection" element={<RoleSelection />} />
           <Route path="SignUp" element={<SignUp />} />

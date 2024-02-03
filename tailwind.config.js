@@ -10,6 +10,7 @@ export default {
       fontFamily: {
         montserrat: "'Montserrat', sans-serif",
         poppins: "'Poppins', sans-serif",
+        lato: "'Lato', sans-serif",
       },
     },
   },
