@@ -1,8 +1,84 @@
-import { Link } from "react-router-dom";
+import { useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  practitionerError,
+  practitionerSignup,
+} from "../authentication/practitionerSignUp";
 
 export default function PractitionalForm() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  const navigate = useNavigate();
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const regNumRef = useRef();
+  const specialtyRef = useRef();
+  const workAddRef = useRef();
+  const workPhoneRef = useRef();
+  const signUp = async () => {
+    setIsLoading(true);
+    const firstName = firstNameRef.current.value;
+    const lastName = lastNameRef.current.value;
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    const regNum = regNumRef.current.value;
+    const specialty = specialtyRef.current.value;
+    const workAddress = workAddRef.current.value;
+    const workPhone = workPhoneRef.current.value;
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      email === "" ||
+      password === "" ||
+      regNum === "" ||
+      specialty === "" ||
+      workAddress === "" ||
+      workPhone === ""
+    ) {
+      setIsLoading(false);
+      setIsError("All fields must be filled");
+      setTimeout(() => setIsError(null), 4000);
+      return;
+    }
+    const success = await practitionerSignup(
+      firstName,
+      lastName,
+      regNum,
+      specialty,
+      workAddress,
+      workPhone,
+      email,
+      password
+    );
+    if (success) {
+      firstNameRef.current.value = "";
+      lastNameRef.current.value = "";
+      emailRef.current.value = "";
+      passwordRef.current.value = "";
+      regNumRef.current.value = "";
+      specialtyRef.current.value = "";
+      workAddRef.current.value = "";
+      workPhoneRef.current.value = "";
+      setIsLoading(false);
+      navigate("/auth/signin");
+    } else {
+      setIsLoading(false);
+      setIsError(practitionerError);
+      setTimeout(() => setIsError(null), 7000);
+    }
+  };
   return (
     <form className="w-full flex flex-col justify-center items-center gap-4 text-[#383838]">
+      {isError !== "Email already in-use" &&
+      isError !== "Invalid Email" &&
+      isError !== "Registration Number already exist" ? (
+        <p className="text-red-700 italic font-semibold font-mono text-xl -mb-4">
+          {isError}
+        </p>
+      ) : null}
       <section className="w-full flex justify-start items-center gap-6">
         <div className="w-[50%] text-left relative">
           <label
@@ -17,6 +93,7 @@ export default function PractitionalForm() {
             name="firstName"
             placeholder="John"
             className="w-full pr-3 pl-8 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none"
+            ref={firstNameRef}
           />
           <svg
             className="w-6 h-6 dark:text-[#383838] text-white absolute bottom-2 left-1"
@@ -45,6 +122,7 @@ export default function PractitionalForm() {
             name="lastName"
             placeholder="Doe"
             className="w-full pr-3 pl-8 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none"
+            ref={lastNameRef}
           />
           <svg
             className="w-6 h-6 dark:text-[#383838] text-white absolute bottom-2 left-1"
@@ -70,7 +148,12 @@ export default function PractitionalForm() {
           id="email"
           name="email"
           placeholder="johndoe@gmail.com"
-          className="w-full pr-3 pl-8 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none"
+          className={`w-full pr-3 pl-8 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none ${
+            isError === "Email already in-use" || isError === "Invalid Email"
+              ? "border-red-700"
+              : "border-[#B4B4B4]"
+          }`}
+          ref={emailRef}
         />
         <svg
           className="w-6 h-6 dark:text-[#383838] text-white absolute bottom-2 left-1"
@@ -94,6 +177,11 @@ export default function PractitionalForm() {
           </g>
         </svg>
       </div>
+      {isError === "Email already in-use" || isError === "Invalid Email" ? (
+        <p className="w-full text-[#DC2626] text-base font-medium text-left -mt-3">
+          {isError}
+        </p>
+      ) : null}
       <div className="w-full text-left relative">
         <label htmlFor="password" className="text-base font-semibold leading-6">
           Password
@@ -105,6 +193,7 @@ export default function PractitionalForm() {
           placeholder="*******"
           autoComplete="true"
           className="w-full pr-3 pl-8 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none"
+          ref={passwordRef}
         />
         <svg
           className="w-6 h-6 dark:text-[#383838] text-white absolute bottom-2 left-1"
@@ -150,7 +239,12 @@ export default function PractitionalForm() {
             id="regNum"
             name="regNum"
             placeholder="FE12345678"
-            className="w-full px-3 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none"
+            className={`w-full px-3 py-2 text-base bg-transparent border focus:border-[#383838] rounded-md outline-none ${
+              isError === "Registration Number already exist"
+                ? "border-red-800"
+                : "border-[#B4B4B4]"
+            }`}
+            ref={regNumRef}
           />
         </div>
         <div className="w-[50%] text-left">
@@ -166,9 +260,15 @@ export default function PractitionalForm() {
             name="specialty"
             placeholder="General Practitioner"
             className="w-full px-3 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none"
+            ref={specialtyRef}
           />
         </div>
       </section>
+      {isError === "Registration Number already exist" ? (
+        <p className="w-full text-[#DC2626] text-base font-medium text-left -mt-3">
+          {isError}
+        </p>
+      ) : null}
       <div className="w-full text-left relative">
         <label
           htmlFor="workAddress"
@@ -182,6 +282,7 @@ export default function PractitionalForm() {
           name="workAddress"
           placeholder="19, Herbert Macaulay Way, Obafemi Awolowo Road, Abuja"
           className="w-full px-3 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none"
+          ref={workAddRef}
         />
       </div>
       <div className="w-full text-left relative">
@@ -197,6 +298,7 @@ export default function PractitionalForm() {
           name="workPhoneNo"
           placeholder="+2348102345678"
           className="w-full px-3 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none"
+          ref={workPhoneRef}
         />
       </div>
       <div className="w-full flex justify-start items-center -mt-2 gap-3">
@@ -205,6 +307,8 @@ export default function PractitionalForm() {
           name="checkbox"
           id="checkbox"
           className="w-4 h-4 accent-primary bg-white outline-none"
+          checked={isChecked}
+          onChange={() => setIsChecked((prev) => !prev)}
         />
         <p className="text-base font-normal text-[#6A6A6A]">
           I agree with the{" "}
@@ -214,13 +318,15 @@ export default function PractitionalForm() {
       </div>
       <button
         type="button"
-        className="w-full bg-primary text-white py-3 rounded-lg text-base"
+        className="w-full bg-primary text-white py-3 rounded-lg text-base disabled:bg-blue-200"
+        disabled={!isChecked}
+        onClick={() => signUp()}
       >
-        Sign Up
+        {isLoading ? <p>....</p> : <p>Sign Up</p>}
       </button>
       <p className="-mt-3 text-base text-[#515151] font-normal text-center">
         Already have an account?{" "}
-        <Link className="text-primary" to={"/auth/login"}>
+        <Link className="text-primary" to={"/auth/signin"}>
           Log in.
         </Link>
       </p>

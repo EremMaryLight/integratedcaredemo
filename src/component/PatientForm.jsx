@@ -218,7 +218,7 @@ export default function PatientForm() {
         type="button"
         className="w-full bg-primary text-white py-3 rounded-lg text-base disabled:bg-blue-200"
         onClick={() => signUp()}
-        disabled={!isChecked && true}
+        disabled={!isChecked}
       >
         {isLoading ? <p className="animate-pulse">.....</p> : <p>Sign Up</p>}
       </button>

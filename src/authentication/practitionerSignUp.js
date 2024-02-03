@@ -30,12 +30,13 @@ const practitionerSignup = async (
       }
     );
     const data = await response.json();
+    console.log(response, data);
     if (response.status === 201 && data.message === "success") {
       practitionerError = null;
       return true;
     } else if (
       response.status === 400 &&
-      data.message === "practitioner already exists"
+      data.message === "Practitioner already exists"
     ) {
       practitionerError = "Email already in-use";
       return false;
@@ -43,9 +44,10 @@ const practitionerSignup = async (
       practitionerError = "Invalid Email";
       return false;
     } else if (
-      response.status === 400 &&
-      data.message ===
-        "E11000 duplicate key error collection: test.practitioners index: registrationNumber_1 dup key: { registrationNumber: 12345699 }"
+      response.status === 500 &&
+      /E11000 duplicate key error collection: test.practitioners/.test(
+        data.message
+      )
     ) {
       practitionerError = "Registration Number already exist";
       return false;
