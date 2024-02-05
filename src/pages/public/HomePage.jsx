@@ -14,21 +14,24 @@ export default function HomePage() {
         <p className="text-[28px] font-medium mb-11">
           Accessible anywhere, anytime
         </p>
-        <button className="bg-primary px-8 py-4 w-fit text-base font-semibold rounded-lg">
+        <button className="px-8 py-4 text-base font-semibold rounded-lg bg-primary w-fit">
           Get Started
         </button>
       </section>
-      <section className="px-4 py-12 bg-[#F5F7FA] font-montserrat flex flex-col justify-center items-center">
-        <p className="text-lg font-semibold text-primary mb-3">What We Offer</p>
+      <section
+        className="px-4 py-12 bg-[#F5F7FA] font-montserrat flex flex-col justify-center items-center"
+        id="offer"
+      >
+        <p className="mb-3 text-lg font-semibold text-primary">What We Offer</p>
         <p className="text-[40px] font-semibold text-black mb-20">
           Improved Quality of Healthcare
         </p>
-        <div className="flex justify-center items-center flex-wrap gap-8">
-          <aside className="px-5 py-8 rounded-lg bg-white text-center grid place-items-center">
+        <div className="flex flex-wrap items-center justify-center gap-8">
+          <aside className="grid px-5 py-8 text-center bg-white rounded-lg place-items-center">
             <div className="w-[77px] h-[77px] bg-primary rounded-full flex justify-center items-center">
               <img src={access} alt="no-access" />
             </div>
-            <p className="text-2xl text-black my-2 font-semibold">
+            <p className="my-2 text-2xl font-semibold text-black">
               Streamlined Access
             </p>
             <p className="w-[266px] text-sm font-medium text-center leading-6">
@@ -36,11 +39,11 @@ export default function HomePage() {
               professionals.
             </p>
           </aside>
-          <aside className="px-5 py-8 rounded-lg bg-white text-center grid place-items-center">
+          <aside className="grid px-5 py-8 text-center bg-white rounded-lg place-items-center">
             <div className="w-[77px] h-[77px] bg-primary rounded-full flex justify-center items-center">
               <img src={connection} alt="connection" />
             </div>
-            <p className="text-2xl text-black my-2 font-semibold">
+            <p className="my-2 text-2xl font-semibold text-black">
               Connected Care
             </p>
             <p className="w-[266px] text-sm font-medium text-center leading-6">
@@ -48,11 +51,11 @@ export default function HomePage() {
               collaborative approach.
             </p>
           </aside>
-          <aside className="px-5 py-8 rounded-lg bg-white text-center grid place-items-center">
+          <aside className="grid px-5 py-8 text-center bg-white rounded-lg place-items-center">
             <div className="w-[77px] h-[77px] bg-primary rounded-full flex justify-center items-center">
               <img src={patient} alt="patient" />
             </div>
-            <p className="text-2xl text-black my-2 font-semibold">
+            <p className="my-2 text-2xl font-semibold text-black">
               Patient-Centric Focus
             </p>
             <p className="w-[266px] text-sm font-medium text-center leading-6">
@@ -60,11 +63,11 @@ export default function HomePage() {
               personalized care.
             </p>
           </aside>
-          <aside className="px-5 py-8 rounded-lg bg-white text-center grid place-items-center">
+          <aside className="grid px-5 py-8 text-center bg-white rounded-lg place-items-center">
             <div className="w-[77px] h-[77px] bg-primary rounded-full flex justify-center items-center">
               <img src={decision} alt="decision" />
             </div>
-            <p className="text-2xl text-black my-2 font-semibold">
+            <p className="my-2 text-2xl font-semibold text-black">
               Informed Decision-Making
             </p>
             <p className="w-[266px] text-sm font-medium text-center leading-6">
@@ -72,11 +75,11 @@ export default function HomePage() {
               decisions.
             </p>
           </aside>
-          <aside className="px-5 py-8 rounded-lg bg-white text-center grid place-items-center">
+          <aside className="grid px-5 py-8 text-center bg-white rounded-lg place-items-center">
             <div className="w-[77px] h-[77px] bg-primary rounded-full flex justify-center items-center">
               <img src={efficiency} alt="efficiency" />
             </div>
-            <p className="text-2xl text-black my-2 font-semibold">
+            <p className="my-2 text-2xl font-semibold text-black">
               Enhanced Efficiency
             </p>
             <p className="w-[266px] text-sm font-medium text-center leading-6">
@@ -85,11 +88,14 @@ export default function HomePage() {
           </aside>
         </div>
       </section>
-      <section className="font-montserrat w-full h-[404px] flex justify-center items-center divide-x-2 divide-black gap-3">
+      <section
+        className="font-montserrat w-full h-[404px] flex justify-center items-center divide-x-2 divide-black gap-3"
+        id="about-us"
+      >
         <div className="text-end w-[553px]">
           <p
             id="about"
-            className="text-primary text-lg font-semibold capitalize"
+            className="text-lg font-semibold capitalize text-primary"
           >
             About Us
           </p>
@@ -104,11 +110,11 @@ export default function HomePage() {
           better-informed decisions and ultimately improving patient outcomes.
         </p>
       </section>
-      <section className="bg-secondary w-full pt-28 px-12 pb-8 flex flex-col justify-start items-start gap-10 text-white font-poppins">
+      <section className="flex flex-col items-start justify-start w-full gap-10 px-12 pb-8 text-white bg-secondary pt-28 font-poppins">
         <p className="text-[40px] font-semibold">How To Register</p>
         <section className="grid grid-cols-3 gap-[150px]">
-          <div className="flex justify-start items-center gap-1">
-            <p className="text-lg font-semibold bg-white text-black px-4 py-1 rounded-full">
+          <div className="flex items-center justify-start gap-1">
+            <p className="px-4 py-1 text-lg font-semibold text-black bg-white rounded-full">
               1
             </p>
             <div>
@@ -120,8 +126,8 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <div className="flex justify-start items-center gap-1">
-            <p className="text-lg font-semibold bg-white text-black px-4 py-1 rounded-full">
+          <div className="flex items-center justify-start gap-1">
+            <p className="px-4 py-1 text-lg font-semibold text-black bg-white rounded-full">
               2
             </p>
             <div>
@@ -131,8 +137,8 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <div className="flex justify-start items-center gap-1">
-            <p className="text-lg font-semibold bg-white text-black px-4 py-1 rounded-full">
+          <div className="flex items-center justify-start gap-1">
+            <p className="px-4 py-1 text-lg font-semibold text-black bg-white rounded-full">
               3
             </p>
             <div>
@@ -152,7 +158,7 @@ export default function HomePage() {
             platform for seamless access to centralized patient data and
             personalized care.
           </p>
-          <button className="text-base font-semibold text-white bg-primary px-10 py-3 rounded-lg mt-3">
+          <button className="px-10 py-3 mt-3 text-base font-semibold text-white rounded-lg bg-primary">
             Get Started
           </button>
         </aside>

@@ -5,6 +5,7 @@ body, html{
     max-width: 1440px;
     margin: 0 auto;
     position: relative;
+    scroll-behavior: smooth;
 }
 .doctors{
     background: url("./assets/doctors.webp");
