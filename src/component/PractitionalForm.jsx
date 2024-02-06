@@ -4,12 +4,15 @@ import {
   practitionerError,
   practitionerSignup,
 } from "../authentication/practitionerSignUp";
-
+// Component for handling practitioner signup
 export default function PractitionalForm() {
+  // State variables for form data, errors, loading state, and checkbox
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  // Function to handle navigation
   const navigate = useNavigate();
+  // Refs to access input values
   const firstNameRef = useRef();
   const lastNameRef = useRef();
   const emailRef = useRef();
@@ -18,8 +21,10 @@ export default function PractitionalForm() {
   const specialtyRef = useRef();
   const workAddRef = useRef();
   const workPhoneRef = useRef();
+  // Function to handle signup form submission
   const signUp = async () => {
     setIsLoading(true);
+    // destructure required arguments
     const firstName = firstNameRef.current.value;
     const lastName = lastNameRef.current.value;
     const email = emailRef.current.value;
@@ -28,6 +33,7 @@ export default function PractitionalForm() {
     const specialty = specialtyRef.current.value;
     const workAddress = workAddRef.current.value;
     const workPhone = workPhoneRef.current.value;
+    // Validate required fields
     if (
       firstName === "" ||
       lastName === "" ||
@@ -40,9 +46,10 @@ export default function PractitionalForm() {
     ) {
       setIsLoading(false);
       setIsError("All fields must be filled");
-      setTimeout(() => setIsError(null), 4000);
+      setTimeout(() => setIsError(null), 4000); // Clear error message after 4 seconds
       return;
     }
+    // Attempt signup
     const success = await practitionerSignup(
       firstName,
       lastName,
@@ -54,6 +61,7 @@ export default function PractitionalForm() {
       password
     );
     if (success) {
+      // Clear form fields and navigate to sign-in page on success
       firstNameRef.current.value = "";
       lastNameRef.current.value = "";
       emailRef.current.value = "";
@@ -63,11 +71,11 @@ export default function PractitionalForm() {
       workAddRef.current.value = "";
       workPhoneRef.current.value = "";
       setIsLoading(false);
-      navigate("/auth/signin");
+      navigate("/auth/signin"); // navigate to login page
     } else {
       setIsLoading(false);
-      setIsError(practitionerError);
-      setTimeout(() => setIsError(null), 7000);
+      setIsError(practitionerError); // Display signup error message
+      setTimeout(() => setIsError(null), 7000); // Clear error message after 4 seconds
     }
   };
   return (
@@ -75,11 +83,11 @@ export default function PractitionalForm() {
       {isError !== "Email already in-use" &&
       isError !== "Invalid Email" &&
       isError !== "Registration Number already exist" ? (
-        <p className="text-red-700 italic font-semibold font-mono text-xl -mb-4">
+        <p className="-mb-4 font-mono text-xl italic font-semibold text-red-700">
           {isError}
         </p>
       ) : null}
-      <section className="w-full flex justify-start items-center gap-6">
+      <section className="flex items-center justify-start w-full gap-6">
         <div className="w-[50%] text-left relative">
           <label
             htmlFor="firstName"
@@ -139,7 +147,7 @@ export default function PractitionalForm() {
           </svg>
         </div>
       </section>
-      <div className="w-full text-left relative">
+      <div className="relative w-full text-left">
         <label htmlFor="email" className="text-base font-semibold leading-6">
           Email
         </label>
@@ -182,7 +190,7 @@ export default function PractitionalForm() {
           {isError}
         </p>
       ) : null}
-      <div className="w-full text-left relative">
+      <div className="relative w-full text-left">
         <label htmlFor="password" className="text-base font-semibold leading-6">
           Password
         </label>
@@ -229,7 +237,7 @@ export default function PractitionalForm() {
           />
         </svg>
       </div>
-      <section className="w-full flex justify-start items-center gap-6">
+      <section className="flex items-center justify-start w-full gap-6">
         <div className="w-[50%] text-left">
           <label htmlFor="regNum" className="text-base font-semibold leading-6">
             Registration Number
@@ -269,7 +277,7 @@ export default function PractitionalForm() {
           {isError}
         </p>
       ) : null}
-      <div className="w-full text-left relative">
+      <div className="relative w-full text-left">
         <label
           htmlFor="workAddress"
           className="text-base font-semibold leading-6"
@@ -285,7 +293,7 @@ export default function PractitionalForm() {
           ref={workAddRef}
         />
       </div>
-      <div className="w-full text-left relative">
+      <div className="relative w-full text-left">
         <label
           htmlFor="workPhoneNo"
           className="text-base font-semibold leading-6"
@@ -301,12 +309,12 @@ export default function PractitionalForm() {
           ref={workPhoneRef}
         />
       </div>
-      <div className="w-full flex justify-start items-center -mt-2 gap-3">
+      <div className="flex items-center justify-start w-full gap-3 -mt-2">
         <input
           type="checkbox"
           name="checkbox"
           id="checkbox"
-          className="w-4 h-4 accent-primary bg-white outline-none"
+          className="w-4 h-4 bg-white outline-none accent-primary"
           checked={isChecked}
           onChange={() => setIsChecked((prev) => !prev)}
         />
@@ -318,7 +326,7 @@ export default function PractitionalForm() {
       </div>
       <button
         type="button"
-        className="w-full bg-primary text-white py-3 rounded-lg text-base disabled:bg-blue-200"
+        className="w-full py-3 text-base text-white rounded-lg bg-primary disabled:bg-blue-200"
         disabled={!isChecked}
         onClick={() => signUp()}
       >

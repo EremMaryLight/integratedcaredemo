@@ -1,22 +1,28 @@
 import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { patientError, patientSignup } from "../authentication/PatientSignUp";
-
+// Component for handling patient signup
 export default function PatientForm() {
+  // State variables for form data, errors, loading state, and checkbox
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  // Refs to access input values
   const firstNameRef = useRef();
   const lastNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
+  // Function to handle navigation
   const navigate = useNavigate();
+  // Function to handle signup form submission
   const signUp = async () => {
     setIsLoading(true);
+    // destructure required arguments
     const firstName = firstNameRef.current.value;
     const lastName = lastNameRef.current.value;
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
+    // Validate required fields
     if (
       firstName === "" ||
       lastName === "" ||
@@ -25,31 +31,33 @@ export default function PatientForm() {
     ) {
       setIsLoading(false);
       setIsError("All fields must be filled");
-      setTimeout(() => setIsError(null), 4000);
+      setTimeout(() => setIsError(null), 4000); // Clear error message after 4 seconds
       return;
     }
+    // Attempt signup
     const success = await patientSignup(firstName, lastName, email, password);
     if (success) {
+      // Clear form fields and navigate to sign-in page on success
       firstNameRef.current.value = "";
       lastNameRef.current.value = "";
       emailRef.current.value = "";
       passwordRef.current.value = "";
-      navigate("/auth/signin");
+      navigate("/auth/signin"); // Navigate to login page
     } else {
       setIsLoading(false);
-      setIsError(patientError);
-      setTimeout(() => setIsError(null), 4000);
+      setIsError(patientError); // Display signup error message
+      setTimeout(() => setIsError(null), 4000); // Clear error message after 4 seconds
     }
   };
 
   return (
     <form className="w-full flex flex-col justify-center items-center gap-7 text-[#383838] font-montserrat">
       {isError !== "Email already in-use" && isError !== "Invalid Email" ? (
-        <p className="text-red-700 italic font-semibold font-mono text-xl -mb-7">
+        <p className="font-mono text-xl italic font-semibold text-red-700 -mb-7">
           {isError}
         </p>
       ) : null}
-      <section className="w-full flex justify-start items-center gap-6">
+      <section className="flex items-center justify-start w-full gap-6">
         <div className="w-[50%] text-left relative">
           <label
             htmlFor="firstName"
@@ -109,7 +117,7 @@ export default function PatientForm() {
           </svg>
         </div>
       </section>
-      <div className="w-full text-left relative">
+      <div className="relative w-full text-left">
         <label htmlFor="email" className="text-base font-semibold leading-6">
           Email
         </label>
@@ -152,7 +160,7 @@ export default function PatientForm() {
           {isError}
         </p>
       ) : null}
-      <div className="w-full text-left relative">
+      <div className="relative w-full text-left">
         <label htmlFor="password" className="text-base font-semibold leading-6">
           Password
         </label>
@@ -199,14 +207,14 @@ export default function PatientForm() {
           />
         </svg>
       </div>
-      <div className="w-full flex justify-start items-center -mt-5 gap-3">
+      <div className="flex items-center justify-start w-full gap-3 -mt-5">
         <input
           type="checkbox"
           name="checkbox"
           id="checkbox"
           checked={isChecked}
           onChange={() => setIsChecked((prev) => !prev)}
-          className="w-4 h-4 accent-primary bg-white outline-none"
+          className="w-4 h-4 bg-white outline-none accent-primary"
         />
         <p className="text-base font-normal text-[#6A6A6A]">
           I agree with the{" "}
@@ -216,7 +224,7 @@ export default function PatientForm() {
       </div>
       <button
         type="button"
-        className="w-full bg-primary text-white py-3 rounded-lg text-base disabled:bg-blue-200"
+        className="w-full py-3 text-base text-white rounded-lg bg-primary disabled:bg-blue-200"
         onClick={() => signUp()}
         disabled={!isChecked}
       >
@@ -224,7 +232,7 @@ export default function PatientForm() {
       </button>
       <p className="-mt-3 text-base text-[#515151] font-normal text-center">
         Already have an account?{" "}
-        <Link className="text-primary" to={"/auth/login"}>
+        <Link className="text-primary" to={"/auth/signin"}>
           Log in.
         </Link>
       </p>

@@ -1,10 +1,47 @@
 import { Link } from "react-router-dom";
 import signupImage from "../../assets/signup.webp";
-import React from "react";
+import React, { useRef, useState } from "react";
+import {
+  practSigninError,
+  practitionerSignin,
+} from "../../authentication/practitionerSignin";
 
 export default function SignIn() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [isRemember, setIsRemember] = useState(false);
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const toogleVisibility = () => {
+    return passwordRef.current.type === "password"
+      ? (passwordRef.current.type = "text")
+      : (passwordRef.current.type = "password");
+  };
+  const signinPractitioner = async (e) => {
+    e.preventDefault();
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    if (email === "" || password === "") {
+      setIsError("Input all fields");
+      setTimeout(() => setIsError(false), 5000);
+      return;
+    }
+    setIsLoading(true);
+    const success = await practitionerSignin(email, password, isRemember);
+    if (success) {
+      console.log("yaaaaah");
+      emailRef.current.value = "";
+      passwordRef.current.value = "";
+      setIsRemember(false);
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
+      setIsError(practSigninError);
+      setTimeout(() => setIsError(false), 5000);
+    }
+  };
   return (
-    <section className="w-full flex justify-start items-start font-montserrat">
+    <section className="flex items-start justify-start w-full font-montserrat">
       <aside className="bg-[#002549] w-[680px] h-screen flex flex-col justify-center items-center text-center sticky top-0 left-0">
         <img
           src={signupImage}
@@ -16,7 +53,7 @@ export default function SignIn() {
         <p className="text-[32px] font-semibold text-white mb-4">
           Integrated<span className="text-primary">Care</span>
         </p>
-        <p className="text-lg text-white font-medium">
+        <p className="text-lg font-medium text-white">
           ...providing centralized repository for all patient information.
         </p>
       </aside>
@@ -25,12 +62,21 @@ export default function SignIn() {
           <p className="text-[32px] font-semibold text-black mb-4">
             Integrated<span className="text-primary">Care</span>
           </p>
-          <p className="text-base text-black font-medium">
+          <p className="text-base font-medium text-black">
             Welcome Back! Log in to continue..
           </p>
+          {isError === "Input all fields" ||
+          isError === "Something went wrong" ? (
+            <p className="text-xl font-medium text-red-500 font-lato">
+              {isError}
+            </p>
+          ) : null}
         </div>
-        <form className="w-full flex flex-col justify-center items-center gap-7 text-[#383838]">
-          <div className="w-full text-left relative">
+        <form
+          className="w-full flex flex-col justify-center items-center gap-7 text-[#383838]"
+          onSubmit={(e) => signinPractitioner(e)}
+        >
+          <div className="relative w-full text-left">
             <label
               htmlFor="email"
               className="text-base font-semibold leading-6"
@@ -42,7 +88,12 @@ export default function SignIn() {
               id="email"
               name="email"
               placeholder="johndoe@gmail.com"
-              className="w-full pr-3 pl-8 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none"
+              className={`w-full pr-3 pl-8 py-2 text-base bg-transparent border focus:border-[#383838] rounded-md outline-none ${
+                isError === "Incorrect Email or Password"
+                  ? "border-red-800"
+                  : "border-[#B4B4B4]"
+              }`}
+              ref={emailRef}
             />
             <svg
               className="w-6 h-6 dark:text-[#383838] text-white absolute bottom-2 left-1"
@@ -66,7 +117,12 @@ export default function SignIn() {
               </g>
             </svg>
           </div>
-          <div className="w-full text-left relative">
+          {isError === "Incorrect Email or Password" && (
+            <p className="w-full -mt-5 text-base text-left text-red-800 font-lato">
+              {isError}
+            </p>
+          )}
+          <div className="relative w-full text-left">
             <label
               htmlFor="password"
               className="text-base font-semibold leading-6"
@@ -79,6 +135,8 @@ export default function SignIn() {
               name="password"
               placeholder="*******"
               className="w-full pr-3 pl-8 py-2 text-base bg-transparent border border-[#B4B4B4] focus:border-[#383838] rounded-md outline-none"
+              ref={passwordRef}
+              autoComplete="true"
             />
             <svg
               className="w-6 h-6 dark:text-[#383838] text-white absolute bottom-2 left-1"
@@ -101,6 +159,7 @@ export default function SignIn() {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
+              onClick={() => toogleVisibility()}
             >
               <path
                 stroke="currentColor"
@@ -114,34 +173,40 @@ export default function SignIn() {
               />
             </svg>
           </div>
-          <div className="w-full flex justify-between items-center -mt-5 gap-3">
-            <div className="flex justify-start items-center gap-2">
+          <div className="flex items-center justify-between w-full gap-3 -mt-5">
+            <div className="flex items-center justify-start gap-2">
               <input
                 type="checkbox"
                 name="checkbox"
                 id="checkbox"
-                className="w-4 h-4 accent-primary bg-white outline-none"
+                className="w-4 h-4 bg-white outline-none accent-primary"
+                checked={isRemember}
+                onChange={() => setIsRemember((val) => !val)}
               />
               <p className="text-base font-normal text-[#6A6A6A]">
                 Keep me signed in
               </p>
             </div>
             <Link
-              className="text-primary text-base"
+              className="text-base text-primary"
               to={"/auth/forgot-password"}
             >
               Forgot Password?
             </Link>
           </div>
           <button
-            type="button"
-            className="w-full bg-primary text-white py-3 rounded-lg text-base"
+            type="submit"
+            className="w-full py-3 text-base text-white rounded-lg bg-primary"
           >
-            Sign In
+            {isLoading ? (
+              <p className="animate-bounce">.....</p>
+            ) : (
+              <p>Sign In</p>
+            )}
           </button>
           <p className="-mt-3 text-base text-[#515151] font-normal text-center">
             Don't have an account?{" "}
-            <Link className="text-primary" to={"/selection"}>
+            <Link className="text-primary" to={"/auth/selection"}>
               Sign up.
             </Link>
           </p>
