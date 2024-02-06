@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import signupImage from "../../assets/signup.webp";
 import React, { useRef, useState } from "react";
-import {
-  practSigninError,
-  practitionerSignin,
-} from "../../authentication/practitionerSignin";
+import { userSigninError, userSignin } from "../../authentication/userSignin";
 
 export default function SignIn() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isRemember, setIsRemember] = useState(false);
+  const [userType, setUserType] = useState("patient");
   const emailRef = useRef();
   const passwordRef = useRef();
   const toogleVisibility = () => {
@@ -21,13 +19,17 @@ export default function SignIn() {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
+    const url =
+      userType === "patient"
+        ? "https://integrated-server.onrender.com/api/patient/login"
+        : "https://integrated-server.onrender.com/api/practitioner/login";
     if (email === "" || password === "") {
       setIsError("Input all fields");
       setTimeout(() => setIsError(false), 5000);
       return;
     }
     setIsLoading(true);
-    const success = await practitionerSignin(email, password, isRemember);
+    const success = await userSignin(url, email, password, isRemember);
     if (success) {
       console.log("yaaaaah");
       emailRef.current.value = "";
@@ -36,7 +38,7 @@ export default function SignIn() {
       setIsLoading(false);
     } else {
       setIsLoading(false);
-      setIsError(practSigninError);
+      setIsError(userSigninError);
       setTimeout(() => setIsError(false), 5000);
     }
   };
@@ -62,9 +64,31 @@ export default function SignIn() {
           <p className="text-[32px] font-semibold text-black mb-4">
             Integrated<span className="text-primary">Care</span>
           </p>
-          <p className="text-base font-medium text-black">
+          <p className="text-base font-medium text-black mb-2">
             Welcome Back! Log in to continue..
           </p>
+          <section className="w-[200px] h-[35px] bg-white mx-auto mt-1 rounded-full shadow-inner shadow-primary/20 flex justify-between items-center overflow-hidden">
+            <button
+              className={`px-3 py-4 text-lato font-semibold outline-none transition-all duration-300 ${
+                userType === "patient"
+                  ? "bg-primary text-white"
+                  : "bg-transparent text-black"
+              }`}
+              onClick={() => setUserType("patient")}
+            >
+              Patient
+            </button>
+            <button
+              className={`px-3 py-4 text-lato font-semibold outline-none transition-all duration-300 ${
+                userType === "practitioner"
+                  ? "bg-primary text-white"
+                  : "bg-transparent text-black"
+              }`}
+              onClick={() => setUserType("practitioner")}
+            >
+              Practitioner
+            </button>
+          </section>
           {isError === "Input all fields" ||
           isError === "Something went wrong" ? (
             <p className="text-xl font-medium text-red-500 font-lato">
