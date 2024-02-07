@@ -7,15 +7,15 @@ export const GlobalPatientProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [userPatient, setUserPatient] = useState(null);
   const storedToken = JSON.parse(localStorage.getItem("integrated"));
-  // Check for stored token
-  if (!storedToken) {
-    // No token, so clear patient data and stop loading
-    setUserPatient(null);
-    setIsLoading(false);
-    return;
-  }
   // Fetch patient details on component mount
   useEffect(() => {
+    // Check for stored token
+    if (!storedToken) {
+      // No token, so clear patient data and stop loading
+      setUserPatient(null);
+      setIsLoading(false);
+      return;
+    }
     const getUserDetail = async () => {
       try {
         setIsLoading(true); // Indicate loading state

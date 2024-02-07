@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import signupImage from "../../assets/signup.webp";
 import React, { useRef, useState } from "react";
 import { userSigninError, userSignin } from "../../authentication/userSignin";
@@ -6,10 +6,11 @@ import { userSigninError, userSignin } from "../../authentication/userSignin";
 export default function SignIn() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [isRemember, setIsRemember] = useState(false);
+  const [isRemember, setIsRemember] = useState(true);
   const [userType, setUserType] = useState("patient");
   const emailRef = useRef();
   const passwordRef = useRef();
+  const navigate = useNavigate();
   const toogleVisibility = () => {
     return passwordRef.current.type === "password"
       ? (passwordRef.current.type = "text")
@@ -29,9 +30,15 @@ export default function SignIn() {
       return;
     }
     setIsLoading(true);
-    const success = await userSignin(url, email, password, isRemember);
+    const success = await userSignin(
+      url,
+      email,
+      password,
+      isRemember,
+      userType
+    );
     if (success) {
-      console.log("yaaaaah");
+      navigate(`/${userType}/dashboard`, { replace: true });
       emailRef.current.value = "";
       passwordRef.current.value = "";
       setIsRemember(false);
@@ -64,7 +71,7 @@ export default function SignIn() {
           <p className="text-[32px] font-semibold text-black mb-4">
             Integrated<span className="text-primary">Care</span>
           </p>
-          <p className="text-base font-medium text-black mb-2">
+          <p className="mb-2 text-base font-medium text-black">
             Welcome Back! Log in to continue..
           </p>
           <section className="w-[200px] h-[35px] bg-white mx-auto mt-1 rounded-full shadow-inner shadow-primary/20 flex justify-between items-center overflow-hidden">

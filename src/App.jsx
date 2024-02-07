@@ -10,15 +10,20 @@ import {
   ConfirmEmail,
   ContactUs,
   HomePage,
+  PatientDashboard,
+  PractitionerDashboard,
   RoleSelection,
   SignIn,
   SignUp,
 } from "./pages";
-import RootLayout from "./layout/RootLayout";
-import PrivateLayoutPatient from "./layout/PrivateLayoutPatient";
+import {
+  RootLayout,
+  PrivateLayoutPatient,
+  PrivateLayoutPractitioner,
+} from "./layout";
 import { GlobalPatientProvider } from "./context/GlobalPatientUser";
 import { GlobalPractitionerProvider } from "./context/GlobalPractitionerUser";
-import PrivateLayoutPractitioner from "./layout/PrivateLayoutPractitioner";
+import { Suspense } from "react";
 
 function App() {
   const router = createBrowserRouter(
@@ -40,20 +45,28 @@ function App() {
         <Route
           path="/patient"
           element={
-            <GlobalPatientProvider>
-              <PrivateLayoutPatient />
-            </GlobalPatientProvider>
+            <Suspense fallback={<p>loading route..</p>}>
+              <GlobalPatientProvider>
+                <PrivateLayoutPatient />
+              </GlobalPatientProvider>
+            </Suspense>
           }
-        ></Route>
+        >
+          <Route path="dashboard" element={<PatientDashboard />} />
+        </Route>
         {/* Practitioner protected route */}
         <Route
           path="practitioner"
           element={
-            <GlobalPractitionerProvider>
-              <PrivateLayoutPractitioner />
-            </GlobalPractitionerProvider>
+            <Suspense fallback={<p>loading route..</p>}>
+              <GlobalPractitionerProvider>
+                <PrivateLayoutPractitioner />
+              </GlobalPractitionerProvider>
+            </Suspense>
           }
-        ></Route>
+        >
+          <Route path="dashboard" element={<PractitionerDashboard />} />
+        </Route>
       </Route>
     )
   );

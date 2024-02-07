@@ -7,6 +7,7 @@ import youtube from "../assets/youtube.png";
 
 export default function RootLayout() {
   const navigate = useNavigate();
+  const storedUser = JSON.parse(localStorage.getItem("integratedUser"));
   return (
     <>
       <header className="flex flex-col items-start justify-start w-full bg-secondary font-montserrat">
@@ -138,18 +139,29 @@ export default function RootLayout() {
             </NavLink>
           </div>
           <div className="flex items-center justify-start gap-3">
-            <button
-              className="flex items-center justify-center gap-2 px-4 py-2 text-sm border rounded-lg text-primary border-primary"
-              onClick={() => navigate("/auth/signin")}
-            >
-              Login
-            </button>
-            <button
-              className="flex items-center justify-center gap-2 px-4 py-2 text-sm text-white border rounded-lg bg-primary"
-              onClick={() => navigate("/auth/selection")}
-            >
-              Register
-            </button>
+            {storedUser ? (
+              <button
+                className="flex items-center justify-center gap-2 px-4 py-2 text-sm text-white border rounded-lg bg-primary"
+                onClick={() => navigate(`/${storedUser}/dashboard`)}
+              >
+                Dashboard
+              </button>
+            ) : (
+              <>
+                <button
+                  className="flex items-center justify-center gap-2 px-4 py-2 text-sm border rounded-lg text-primary border-primary"
+                  onClick={() => navigate("/auth/signin")}
+                >
+                  Login
+                </button>
+                <button
+                  className="flex items-center justify-center gap-2 px-4 py-2 text-sm text-white border rounded-lg bg-primary"
+                  onClick={() => navigate("/auth/selection")}
+                >
+                  Register
+                </button>
+              </>
+            )}
           </div>
         </nav>
       </header>

@@ -1,5 +1,5 @@
 let userSigninError = null;
-const userSignin = async (url, email, password, remember) => {
+const userSignin = async (url, email, password, remember, userType) => {
   try {
     const response = await fetch(url, {
       method: "POST",
@@ -12,12 +12,12 @@ const userSignin = async (url, email, password, remember) => {
       }),
     });
     const data = await response.json();
-    console.log(data, response);
     if (response.status === 200 && data.email) {
       userSigninError = null;
       remember
         ? localStorage.setItem("integrated", JSON.stringify(data.token))
         : null;
+      localStorage.setItem("integratedUser", JSON.stringify(userType));
       return true;
     } else if (
       response.status === 401 &&

@@ -7,15 +7,15 @@ export const GlobalPractitionerProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [userPractitioner, setUserPractitioner] = useState(null);
   const storedToken = JSON.parse(localStorage.getItem("integrated"));
-  // Check for stored token
-  if (!storedToken) {
-    // No token, so clear practitioner data and stop loading
-    setUserPractitioner(null);
-    setIsLoading(false);
-    return;
-  }
   // Fetch practitioner details on component mount
   useEffect(() => {
+    // Check for stored token
+    if (!storedToken) {
+      // No token, so clear practitioner data and stop loading
+      setUserPractitioner(null);
+      setIsLoading(false);
+      return;
+    }
     const getUserDetail = async () => {
       try {
         setIsLoading(true); // Indicate loading state
