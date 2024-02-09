@@ -12,7 +12,7 @@ import settingsImg from "../assets/settings.png";
 import faqsImg from "../assets/faqs.png";
 import supportImg from "../assets/support.png";
 import logoutImg from "../assets/logout.png";
-import { userLogout } from "../authentication/UserLogout";
+import { userLogout } from "../authentication/userLogout";
 
 export default function PrivateLayoutPractitioner() {
   const { userPractitioner } = useContext(GlobalPractitionerContext);
