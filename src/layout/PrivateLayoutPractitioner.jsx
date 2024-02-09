@@ -20,7 +20,7 @@ export default function PrivateLayoutPractitioner() {
   const navigate = useNavigate();
   return userPractitioner && userPractitioner.confirmed ? (
     <section className="flex items-start justify-start font-montserrat">
-      <aside className="w-[240px] h-screen bg-[#004385] text-[#E6E6E6] py-9 flex flex-col justify-between items-start">
+      <aside className="w-[240px] h-screen sticky top-0 left-0 bg-[#004385] text-[#E6E6E6] py-9 flex flex-col justify-between items-start">
         <div className="px-4">
           <p className="text-2xl font-semibold text-white">
             Integrated<span className="text-primary">Care</span>
@@ -146,10 +146,59 @@ export default function PrivateLayoutPractitioner() {
       </aside>
       <section className="w-full">
         <nav className="w-full h-[65px] bg-white flex justify-between items-center font-montserrat px-7 drop-shadow-sm">
-          <section className="text-2xl font-semibold">
-            <p>Dashboard</p>
+          <section className="text-2xl font-semibold capitalize">
+            <p>{location.pathname.split("/")[2]}</p>
           </section>
-          <section></section>
+          <section className="w-[400px] border border-[#B4B4B4] rounded-md py-2 flex justify-start items-center">
+            <input
+              type="text"
+              id="search"
+              className="bg-transparent pl-4 pr-1 w-[90%] outline-none text-base font-lato text-black placeholder:text-[#B4B4B4]"
+              placeholder="Search here"
+            />
+            <svg
+              className="w-6 h-6 text-gray-500"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeWidth="2"
+                d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+              />
+            </svg>
+          </section>
+          <section className="flex items-center justify-start h-full font-lato">
+            <div className="w-10 h-10 overflow-hidden rounded-full bg-primary"></div>
+            <div className="flex flex-col items-start justify-center h-full ml-2">
+              <p className="text-sm font-medium leading-5 capitalize">
+                {`${userPractitioner.firstName} ${userPractitioner.lastName}`}
+              </p>
+              <p className="text-xs font-normal leading-5 text-[#838383]">
+                {userPractitioner.email}
+              </p>
+            </div>
+            <div>
+              <svg
+                className="w-7 h-7 text-[#383838] ml-7"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 5.4V3m0 2.4a5.3 5.3 0 0 1 5.1 5.3v1.8c0 2.4 1.9 3 1.9 4.2 0 .6 0 1.3-.5 1.3h-13c-.5 0-.5-.7-.5-1.3 0-1.2 1.9-1.8 1.9-4.2v-1.8A5.3 5.3 0 0 1 12 5.4ZM8.7 18c.1.9.3 1.5 1 2.1a3.5 3.5 0 0 0 4.6 0c.7-.6 1.3-1.2 1.4-2.1h-7Z"
+                />
+              </svg>
+            </div>
+          </section>
         </nav>
         <Outlet />
       </section>
