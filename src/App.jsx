@@ -24,6 +24,7 @@ import {
 import { GlobalPatientProvider } from "./context/GlobalPatientUser";
 import { GlobalPractitionerProvider } from "./context/GlobalPractitionerUser";
 import { Suspense } from "react";
+import { MainLoader } from "./component";
 
 function App() {
   const router = createBrowserRouter(
@@ -58,7 +59,7 @@ function App() {
         <Route
           path="practitioner"
           element={
-            <Suspense fallback={<p>loading route..</p>}>
+            <Suspense fallback={<MainLoader />}>
               <GlobalPractitionerProvider>
                 <PrivateLayoutPractitioner />
               </GlobalPractitionerProvider>

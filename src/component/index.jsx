@@ -4,3 +4,4 @@ export { default as ForgotPasswordForm } from "./ForgotPasswordForm";
 export { default as CheckMail } from "./CheckMail";
 export { default as ConfirmMail } from "./ConfirmMail";
 export { default as ConfirmMailApprove } from "./ConfirmMailApprove";
+export { default as MainLoader } from "./MainLoader";

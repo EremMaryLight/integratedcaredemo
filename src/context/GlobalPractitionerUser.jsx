@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { MainLoader } from "../component";
 // Create a context for sharing practitioner data across components
 export const GlobalPractitionerContext = createContext(null);
 
@@ -59,7 +60,7 @@ export const GlobalPractitionerProvider = ({ children }) => {
     <GlobalPractitionerContext.Provider
       value={{ userPractitioner, setUserPractitioner }}
     >
-      {isLoading ? <p>loading...</p> : children}
+      {isLoading ? <MainLoader /> : children}
     </GlobalPractitionerContext.Provider>
   );
 };

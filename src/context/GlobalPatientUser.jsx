@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { MainLoader } from "../component";
 // Create a context for sharing patient data across components
 export const GlobalPatientContext = createContext(null);
 
@@ -57,7 +58,7 @@ export const GlobalPatientProvider = ({ children }) => {
   }, []);
   return (
     <GlobalPatientContext.Provider value={{ userPatient, setUserPatient }}>
-      {isLoading ? <p>loading...</p> : children}
+      {isLoading ? <MainLoader /> : children}
     </GlobalPatientContext.Provider>
   );
 };
