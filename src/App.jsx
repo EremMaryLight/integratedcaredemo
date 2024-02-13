@@ -12,6 +12,11 @@ import {
   HomePage,
   PatientDashboard,
   PractitionerDashboard,
+  PractitionerFAQ,
+  PractitionerNotif,
+  PractitionerPatients,
+  PractitionerSettings,
+  PractitionerSupport,
   RoleSelection,
   SignIn,
   SignUp,
@@ -67,6 +72,11 @@ function App() {
           }
         >
           <Route path="dashboard" element={<PractitionerDashboard />} />
+          <Route path="patients" element={<PractitionerPatients />} />
+          <Route path="notification" element={<PractitionerNotif />} />
+          <Route path="settings" element={<PractitionerSettings />} />
+          <Route path="faq" element={<PractitionerFAQ />} />
+          <Route path="support" element={<PractitionerSupport />} />
         </Route>
       </Route>
     )

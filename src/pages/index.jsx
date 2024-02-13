@@ -14,3 +14,16 @@ export const PractitionerDashboard = lazy(() =>
 export const PatientDashboard = lazy(() =>
   import("./private/PatientDashboard")
 );
+export const PractitionerPatients = lazy(() =>
+  import("./private/PractitionerPatients")
+);
+export const PractitionerNotif = lazy(() =>
+  import("./private/PractitionerNotif")
+);
+export const PractitionerSettings = lazy(() =>
+  import("./private/PractitionerSettings")
+);
+export const PractitionerFAQ = lazy(() => import("./private/PractitionerFaq"));
+export const PractitionerSupport = lazy(() =>
+  import("./private/PractitionerSupport")
+);
