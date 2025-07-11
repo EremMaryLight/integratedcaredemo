@@ -1,27 +1,27 @@
 export default function ContactUs() {
   return (
     <>
-      <section className="w-full h-[360px] flex flex-col gap-4 justify-center items-center text-center contact bg-center font-montserrat text-white">
+      <section className=" w-full h-[360px] flex flex-col gap-4 justify-center items-center text-center contact bg-center font-montserrat text-white">
         <p className="text-[52px] font-bold leading-[56px]">Contact Us</p>
         <p className="text-xl font-medium">Let's start a conversation...</p>
       </section>
-      <section className="w-full bg-[#F5F7FA] flex justify-center items-center gap-20 min-h-[800px] font-montserrat">
+      <section className="mt-5 w-full flex flex-col md:flex-row bg-[#F5F7FA] justify-center items-center gap-20 min-h-[800px] font-montserrat">
         <section className="w-[294px] p-5 flex flex-col justify-center items-center bg-[#004385] rounded-lg">
           <p className="text-[28px] font-semibold text-white">Opening Hours</p>
           <p className="w-[145px] text-center text-white text-lg font-medium font-lato">
             Mondays - Fridays 24/7
           </p>
         </section>
-        <form className="flex flex-col justify-start items-center gap-10 font-lato w-[544px] bg-white shadow-primary shadow-sm py-10 rounded-lg">
+        <form className="mb-5 flex flex-col justify-center md:justify-start items-center gap-5 md:gap-10 font-lato w-[350px] md:w-[544px] bg-white shadow-primary shadow-sm py-10 rounded-lg">
           <div className="w-[360px] text-center">
             <p className="text-3xl font-montserrat font-semibold">
               Drop a message
             </p>
-            <p className="text-lg mt-3">
+            <p className="text-sm md:text-lg mt-3">
               Please contact us if you have any question or concerns
             </p>
           </div>
-          <section className="w-[464px] flex flex-col justify-start items-center">
+          <section className="md:w-[464px]  flex flex-col justify-start items-center">
             <div className="w-full flex flex-col justify-start items-start gap-3 mb-4">
               <label htmlFor="fullName" className="text-base font-semibold">
                 Your Name
