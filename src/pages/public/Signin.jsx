@@ -50,8 +50,8 @@ export default function SignIn() {
     }
   };
   return (
-    <section className="flex items-start justify-start w-full font-montserrat">
-      <aside className="bg-[#002549] w-[680px] h-screen flex flex-col justify-center items-center text-center sticky top-0 left-0">
+    <section className="flex flex-col md:flex-row md:items-start justify-start w-full font-montserrat">
+      <aside className="bg-[#002549] md:w-[680px] md:h-screen flex flex-col justify-center items-center text-center md:sticky top-0 left-0">
         <img
           src={signupImage}
           alt="image"
@@ -66,12 +66,12 @@ export default function SignIn() {
           ...providing centralized repository for all patient information.
         </p>
       </aside>
-      <aside className="bg-white w-[680px] min-h-screen flex flex-col justify-center items-center gap-16 text-center px-16 py-8">
+      <aside className="bg-white md:w-[680px] md:min-h-screen flex flex-col justify-center items-center gap-16 text-center px-5 md:px-16 py-8">
         <div>
           <p className="text-[32px] font-semibold text-black mb-4">
             Integrated<span className="text-primary">Care</span>
           </p>
-          <p className="mb-2 text-base font-medium text-black">
+          <p className="mb-2 text-sm md:text-base font-medium text-black">
             Welcome Back! Log in to continue..
           </p>
           <section className="w-[200px] h-[35px] bg-white mx-auto mt-1 rounded-full shadow-inner shadow-primary/20 flex justify-between items-center overflow-hidden">
@@ -204,8 +204,8 @@ export default function SignIn() {
               />
             </svg>
           </div>
-          <div className="flex items-center justify-between w-full gap-3 -mt-5">
-            <div className="flex items-center justify-start gap-2">
+          <div className="flex justify-between w-full gap-3 -mt-5">
+            <div className="flex items-center justify-between gap-2">
               <input
                 type="checkbox"
                 name="checkbox"
@@ -214,12 +214,12 @@ export default function SignIn() {
                 checked={isRemember}
                 onChange={() => setIsRemember((val) => !val)}
               />
-              <p className="text-base font-normal text-[#6A6A6A]">
+              <p className="text-sm md:text-base font-normal text-[#6A6A6A]">
                 Keep me signed in
               </p>
             </div>
             <Link
-              className="text-base text-primary"
+              className="text-sm md:text-base text-primary"
               to={"/auth/forgot-password"}
             >
               Forgot Password?

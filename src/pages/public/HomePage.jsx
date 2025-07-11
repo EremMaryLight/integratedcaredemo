@@ -6,7 +6,7 @@ import efficiency from "../../assets/efficiency.webp";
 export default function HomePage() {
   return (
     <>
-      <section className="w-full min-h-[80vh] flex flex-col justify-center items-center text-center doctors bg-bottom bg-cover text-white font-montserrat">
+      <section className="overflow-hidden w-full min-h-[80vh] flex flex-col justify-center items-center text-center doctors bg-bottom bg-cover text-white font-montserrat">
         <p className="text-[44px] font-bold mb-4">
           SImplified Patient Data for Improved{" "}
           <span className="text-primary">Healthcare</span>
@@ -14,7 +14,7 @@ export default function HomePage() {
         <p className="text-[28px] font-medium mb-11">
           Accessible anywhere, anytime
         </p>
-        <button className="px-8 py-4 text-base font-semibold rounded-lg bg-primary w-fit">
+        <button onClick="auth/signin" className="px-8 py-4 text-base font-semibold rounded-lg bg-primary w-fit">
           Get Started
         </button>
       </section>
@@ -22,8 +22,8 @@ export default function HomePage() {
         className="px-4 py-12 bg-[#F5F7FA] font-montserrat flex flex-col justify-center items-center"
         id="offer"
       >
-        <p className="mb-3 text-lg font-semibold text-primary">What We Offer</p>
-        <p className="text-[40px] font-semibold text-black mb-20">
+        <p className="mb-3 text-lg md:text-3xl font-semibold text-primary">What We Offer</p>
+        <p className="text-[40px] font-semibold text-black mb-20 text-center">
           Improved Quality of Healthcare
         </p>
         <div className="flex flex-wrap items-center justify-center gap-8">
@@ -89,31 +89,31 @@ export default function HomePage() {
         </div>
       </section>
       <section
-        className="font-montserrat w-full h-[404px] flex justify-center items-center divide-x-2 divide-black gap-3"
+        className="px-3 font-montserrat w-full h-[404px] flex justify-center items-center divide-x-2 divide-black gap-3"
         id="about-us"
       >
-        <div className="text-end w-[553px]">
+        <div className="text-end w-full md:w-[553px]">
           <p
             id="about"
-            className="text-lg font-semibold capitalize text-primary"
+            className="text-lg font-semibold capitalize text-primary text-center"
           >
             About Us
           </p>
-          <p className="text-[40px] font-semibold text-black leading-10">
+          <p className="text-[20px] md:text-[40px] font-semibold text-black leading-10 text-center">
             Revolutionized Healthcare Through Centralized Data
           </p>
         </div>
-        <p className="w-[510px] px-2 text-justify">
+        <p className="md:w-[510px] px-2 text-center text-sm">
           We're dedicated to transforming patient care by providing a
           centralized hub for comprehensive medical data. With us, healthcare
           professionals can access crucial information seamlessly, ensuring
           better-informed decisions and ultimately improving patient outcomes.
         </p>
       </section>
-      <section className="flex flex-col items-start justify-start w-full gap-10 px-12 pb-8 text-white bg-secondary pt-28 font-poppins">
-        <p className="text-[40px] font-semibold">How To Register</p>
-        <section className="grid grid-cols-3 gap-[150px]">
-          <div className="flex items-center justify-start gap-1">
+      <section className="flex flex-col items-center justify-start w-full gap-10 px-12 pb-8 text-white bg-secondary pt-28 font-poppins">
+        <p className=" text-2xl md:text-[40px] font-semibold ">How To Register</p>
+        <section className="flex flex-col gap-6 md:grid md:grid-cols-3 md:gap-[150px]">
+          <div className="flex items-center justify-start gap-6">
             <p className="px-4 py-1 text-lg font-semibold text-black bg-white rounded-full">
               1
             </p>
@@ -126,7 +126,7 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <div className="flex items-center justify-start gap-1">
+          <div className="flex items-center justify-start gap-6">
             <p className="px-4 py-1 text-lg font-semibold text-black bg-white rounded-full">
               2
             </p>
@@ -137,7 +137,7 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <div className="flex items-center justify-start gap-1">
+          <div className="flex items-center justify-start gap-6">
             <p className="px-4 py-1 text-lg font-semibold text-black bg-white rounded-full">
               3
             </p>
@@ -151,9 +151,9 @@ export default function HomePage() {
         </section>
       </section>
       <section className="w-full h-[360px] bg-white relative">
-        <aside className="w-[882px] h-[281px] flex flex-col justify-center items-center gap-3 bg-white border-t-4 border-t-black font-montserrat text-center rounded-b-lg shadow-md absolute -bottom-20 left-[50%] -translate-x-[50%]">
-          <p className="text-3xl font-semibold leading-10">Get Started Today</p>
-          <p className="w-[715px] text-base font-medium leading-6 text-black/65">
+        <aside className="w-[350px] md:w-[882px] h-[281px] flex flex-col justify-center items-center gap-3 bg-white border-t-4 border-t-black font-montserrat text-center rounded-b-lg shadow-md absolute -bottom-20 left-[50%] -translate-x-[50%]">
+          <p className="text-xl md:text-3xl font-semibold leading-10">Get Started Today</p>
+          <p className="w-full text-sm md:text-lg md:w-[715px] text-center font-medium leading-6 text-black/65">
             Embark on Your Health Journey Today! Get started with our healthcare
             platform for seamless access to centralized patient data and
             personalized care.

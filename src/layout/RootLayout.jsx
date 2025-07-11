@@ -13,7 +13,7 @@ export default function RootLayout() {
 
   return (
     <>
-      <header className="flex flex-col items-start justify-start w-full bg-secondary font-montserrat">
+      <header className=" overflow-hidden flex flex-col items-start justify-start w-full bg-secondary font-montserrat">
         {/* Top Contact Bar */}
         <section className="flex items-center justify-between w-full h-10 px-4 text-sm text-white">
           {/* ... leave contact/social section unchanged ... */}
@@ -186,24 +186,24 @@ export default function RootLayout() {
       </header>
 
       {/* Main Content + Footer stays same */}
-      <main className="w-full min-h-screen">
+      <main className="w-full min-h-screen ">
         <Outlet />
       </main>
  
 
-      <footer className="flex flex-col items-start justify-start w-full gap-10 px-12 pb-8 text-white bg-secondary pt-28 font-poppins">
+      <footer className=" overflow-hidden flex flex-col  w-full gap-10 px-12 pb-8 text-white bg-secondary pt-28 font-poppins">
         <p className="text-2xl font-bold">
           Integrated<span className="text-primary">Care</span>{" "}
           <span className="text-lg font-medium leading-7 font-lato">
             provides a centralized repository for all patient information.
           </span>
         </p>
-        <section className="flex justify-start items-start gap-[190px] font-lato border-b border-b-black pb-12">
+        <section className="grid grid-cols-2 md:grid-cols-4 md:flex-row items-center md:justify-between   font-lato border-b border-b-black pb-12">
           <div className="flex flex-col items-start justify-start gap-4">
-            <p className="text-2xl font-semibold">Company</p>
-            <p className="text-lg font-medium">About us</p>
-            <p className="text-lg font-medium">Our Services</p>
-            <p className="text-lg font-medium">FAQs</p>
+            <a className="text-2xl font-semibold">Company</a>
+            <a className="text-lg font-medium">About us</a>
+            <a className="text-lg font-medium">Our Services</a>
+            <a className="text-lg font-medium">FAQs</a>
           </div>
           <div className="flex flex-col items-start justify-start gap-4">
             <p className="text-2xl font-semibold">Products</p>
@@ -215,7 +215,7 @@ export default function RootLayout() {
             <p className="text-lg font-medium">Legal</p>
             <p className="text-lg font-medium">Terms of service</p>
           </div>
-          <div className="w-[320px] flex flex-col justify-start items-center gap-6">
+          <div className=" col-span-2 md:col-auto flex flex-col justify-start items-center gap-6">
             <p>
               Be the first to know about our new update. Get a mail in your
               inbox.
@@ -258,11 +258,11 @@ export default function RootLayout() {
             </button>
           </div>
         </section>
-        <section className="flex items-center justify-center w-full gap-7">
-          <p className="text-base font-semibold capitalize font-lato">
+        <section className="flex flex-col md:flex-row items-center justify-center w-full gap-7">
+          <p className="text-sm text-center  font-semibold capitalize font-lato">
             IntegratedCare 2024 all right reserved
           </p>
-          <div className="flex items-center justify-start gap-8">
+          <div className="flex items-center gap-8">
             <a href="https://www.facebook.com" target="_blank">
               <img
                 src={facebook}

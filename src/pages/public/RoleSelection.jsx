@@ -9,13 +9,12 @@ export default function RoleSelection() {
   const navigate = useNavigate();
   return (
     <section className="w-full font-montserrat bg-white flex flex-col justify-center items-center text-center gap-20 py-10">
-      <p className="text-[#383838] text-[36px] font-semibold max-w-[960px] leading-10">
+      <p className="text-[#383838] text-md md:text-[36px] font-semibold max-w-[960px] leading-10">
         Select the option that best describes you and dive into a personalized
         experience...
       </p>
-      <section className="flex justify-center items-center gap-20">
-        <aside
-          className={`w-[520px] px-14 py-10 border  rounded-lg cursor-pointer relative ${
+      <section className="flex flex-col md:flex-row justify-center items-center gap-20">
+        <aside className={` w-[350px] md:w-[520px] px-14 py-10 border  rounded-lg cursor-pointer relative ${
             isPatient
               ? "border-primary text-primary"
               : "border-[#B4B4B4] text-[#6A6A6A]"
@@ -31,7 +30,7 @@ export default function RoleSelection() {
             alt="patient"
             width={400}
             height={244}
-            className="w-[390px] h-[234px] mb-10"
+            className=" w-[200px] md:w-[390px] h-[234px] mb-10"
           />
           <p className="text-2xl font-semibold mb-5">Patients</p>
           <p className="text-lg font-normal leading-7">
@@ -53,7 +52,7 @@ export default function RoleSelection() {
           </svg>
         </aside>
         <aside
-          className={`w-[520px] px-14 py-10 border rounded-lg cursor-pointer relative ${
+          className={` w-[350px] md:w-[520px] px-14 py-10 border rounded-lg cursor-pointer relative ${
             isPractitional
               ? "border-primary text-primary"
               : "border-[#B4B4B4] text-[#6A6A6A]"
@@ -95,7 +94,7 @@ export default function RoleSelection() {
       </section>
       <button
         disabled={!isPatient && !isPractitional}
-        className="disabled:bg-[#b0cbd8f5] bg-primary text-white w-[400px] py-4 rounded-lg"
+        className="disabled:bg-[#b0cbd8f5] bg-primary text-white w-[200px] md:w-[400px] py-4 rounded-lg"
         onClick={() => navigate("/auth/signup", { state: userType })}
       >
         Continue

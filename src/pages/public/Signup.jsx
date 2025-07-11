@@ -4,8 +4,8 @@ import { PatientForm, PractitionalForm } from "../../component";
 export default function SignUp() {
   const location = useLocation();
   return (
-    <section className="w-full flex justify-start items-start font-montserrat">
-      <aside className="bg-[#002549] w-[680px] h-screen flex flex-col justify-center items-center text-center sticky top-0 left-0">
+    <section className="flex flex-col md:flex-row w-full  justify-start items-start font-montserrat">
+      <aside className="bg-[#002549] md:w-[680px] md:h-screen flex flex-col justify-center items-center text-center md:sticky top-0 left-0">
         <img
           src={signupImage}
           alt="image"
@@ -20,7 +20,7 @@ export default function SignUp() {
           ...providing centralized repository for all patient information.
         </p>
       </aside>
-      <aside className="bg-white w-[680px] min-h-screen flex flex-col justify-center items-center gap-16 text-center px-16 py-8">
+      <aside className="bg-white md:w-[680px] md:min-h-screen flex flex-col justify-center items-center gap-16 text-center px-5 md:px-16 py-8">
         <div>
           <p className="text-[32px] font-semibold text-black mb-4">
             Integrated<span className="text-primary">Care</span>

@@ -216,7 +216,7 @@ export default function PatientForm() {
           onChange={() => setIsChecked((prev) => !prev)}
           className="w-4 h-4 bg-white outline-none accent-primary"
         />
-        <p className="text-base font-normal text-[#6A6A6A]">
+        <p className=" text-xs md:text-base font-normal text-[#6A6A6A]">
           I agree with the{" "}
           <Link className="text-primary">terms of service</Link> and{" "}
           <Link className="text-primary">privacy policy</Link>.
